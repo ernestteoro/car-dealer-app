@@ -1,10 +1,17 @@
 package com.assignment.cardealer.model;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.sql.Timestamp;
 import java.util.Objects;
 
+@Data
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "roles_user", schema = "car_dealers")
 public class RolesUser {
@@ -29,6 +36,7 @@ public class RolesUser {
     @JoinColumn(name = "id_users", referencedColumnName = "id_users", nullable = false)
     private Users usersByIdUsers;
 
+    /*
     public int getIdRolesUser() {
         return idRolesUser;
     }
@@ -89,4 +97,6 @@ public class RolesUser {
     public void setUsersByIdUsers(Users usersByIdUsers) {
         this.usersByIdUsers = usersByIdUsers;
     }
+
+     */
 }

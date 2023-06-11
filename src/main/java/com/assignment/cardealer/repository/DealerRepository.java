@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
 public interface DealerRepository extends JpaRepository<Dealer, Long> {
     List<Dealer> findDealerByName(String name);
     Optional<Dealer> findDealerById(Long id);

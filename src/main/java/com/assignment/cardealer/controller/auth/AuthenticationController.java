@@ -37,7 +37,7 @@ public class AuthenticationController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Successful creation",
                     content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Listing.class)) }),
+                            schema = @Schema(implementation = Users.class)) }),
             @ApiResponse(responseCode = "500", description = "Internal server error",
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = ErrorResponse.class)) })
@@ -61,7 +61,7 @@ public class AuthenticationController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Successful creation",
                     content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Listing.class)) }),
+                            schema = @Schema(implementation = Users.class)) }),
             @ApiResponse(responseCode = "404", description = "User not found",
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = UserNotFoundException.class))}),
@@ -78,7 +78,7 @@ public class AuthenticationController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successful operation",
                     content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Listing.class)) }),
+                            schema = @Schema(implementation = HttpServletRequest.class)) }),
             @ApiResponse(responseCode = "404", description = "User not found",
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = UserNotFoundException.class))}),

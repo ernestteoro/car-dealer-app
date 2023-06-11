@@ -1,12 +1,16 @@
 package com.assignment.cardealer.service;
 
+import com.assignment.cardealer.exception.DealerNotFoundException;
 import com.assignment.cardealer.model.Dealer;
 import com.assignment.cardealer.repository.DealerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import java.util.List;
+import org.springframework.stereotype.Service;
 
-@Component
+import java.util.List;
+import java.util.Optional;
+
+@Service
 public class DealerService {
     private final DealerRepository dealerRepository;
 
@@ -31,10 +35,21 @@ public class DealerService {
     }
 
     public void deleteDealer(Long id) {
-        dealerRepository.findDealerById(id).ifPresent(dealerRepository::delete);
+        Optional<Dealer> dealer = dealerRepository.findDealerById(id);
+        if (dealer.isPresent()){
+            dealerRepository.deleteById(id);
+        }
     }
 
     public Dealer addDealer(Dealer dealer){
         return dealerRepository.save(dealer);
     }
+
+    public Dealer updateDealer(Long id, Dealer dealer){
+        Dealer d = dealerRepository.findDealerById(id).orElseThrow(() -> new DealerNotFoundException(id.toString()));
+        d.setName(dealer.getName());
+        d.setTierLimit(dealer.getTierLimit());
+        return dealerRepository.save(d);
+    }
+
 }

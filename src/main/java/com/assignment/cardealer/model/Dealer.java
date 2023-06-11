@@ -2,9 +2,16 @@ package com.assignment.cardealer.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.List;
 
+@Data
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "dealers", schema = "car_dealers")
 public class Dealer {
@@ -16,45 +23,17 @@ public class Dealer {
     private int tierLimit;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "dealer")
+    @OneToMany(mappedBy = "dealer", fetch = FetchType.LAZY)
     private List<Listing> listings;
 
-    public Dealer() {}
+    public Dealer(Long id, String name, int tierLimit) {
+        this.name = name;
+        this.tierLimit = tierLimit;
+    }
 
     public Dealer(String name, int tierLimit) {
         this.name = name;
         this.tierLimit = tierLimit;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getTierLimit() {
-        return tierLimit;
-    }
-
-    public void setTierLimit(int limit) {
-        this.tierLimit = limit;
-    }
-
-    public List<Listing> getListings() {
-        return listings;
-    }
-
-    public void setListings(List<Listing> listings) {
-        this.listings = listings;
-    }
 }

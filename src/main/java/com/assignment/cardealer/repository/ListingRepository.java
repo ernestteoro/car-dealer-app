@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
 public interface ListingRepository extends JpaRepository<Listing, Long> {
     Optional<Listing> findListingById(Long id);
     List<Listing> findAll();

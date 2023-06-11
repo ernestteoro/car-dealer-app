@@ -8,11 +8,12 @@ import com.assignment.cardealer.repository.DealerRepository;
 import com.assignment.cardealer.repository.ListingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 
-@Component
+@Service
 public class ListingService {
 
     private final ListingRepository listingRepository;
